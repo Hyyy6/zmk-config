@@ -11,13 +11,13 @@
 
 // / enum layers = {
 
-#define    LAYER_T_DEFAULT 0
-#define    LAYER_T_EXTRA 1
-#define    LAYER_T_NAV 2
-#define    LAYER_T_HMRM 3
-#define    LAYER_T_MAP 4
-#define    LAYER_T_BT 5
-#define    LAYER_T_MAX 6
+#define LAYER_T_DEFAULT 0
+#define LAYER_T_HMRM 1
+#define LAYER_T_EXTRA 2
+#define LAYER_T_NAV 3
+#define LAYER_T_BT 4
+#define LAYER_T_MAP 5
+#define LAYER_T_MAX 6
 
 // }
 
@@ -56,19 +56,22 @@
         compatible = "zmk,keymap";
 
         LAYER_T_DEFAULT {
-            // ------------------------------------------------------------------------------------------------------------
-            // |  ESC  |  1  |  2  |  3   |  4   |  5   |                   |  6   |  7    |  8    |  9   |   0   |   `   |
-            // |  TAB  |  Q  |  W  |  E   |  R   |  T   |                   |  Y   |  U    |  I    |  O   |   P   |   -   |
-            // |  CTRL |  A  |  S  |  D   |  F   |  G   |                   |  H   |  J    |  K    |  L   |   ;   |   '   |
-            // | SHIFT |  Z  |  X  |  C   |  V   |  B   |   "["  |  |  "]"  |  N   |  M    |  ,    |  .   |   /   | SHIFT |
-            //                     | ALT  | GUI  | LOWER|  SPACE |  | ENTER | RAISE| BSPC  | GUI   |
-
             bindings = <
 &kp ESC    &kp N1  &kp N2  &kp N3        &kp N4        &kp N5                                    &kp N6           &kp N7         &kp N8           &kp N9   &kp N0    &kp BACKSLASH
 &kp TAB    &kp Q   &kp W   &kp E         &kp R         &kp T                                     &kp Y            &kp U          &kp I            &kp O    &kp P     &kp MINUS
 &kp LCTRL  &kp A   &kp S   &kp D         &kp F         &kp G                                     &kp H            &kp J          &kp K            &kp L    &kp SEMI  &kp SQT
 &kp LSHFT  &kp Z   &kp X   &kp C         &kp V         &kp B              &kp LBKT     &kp RBKT  &kp N            &kp M          &kp COMMA        &kp DOT  &kp FSLH  &kp RET
-                           &kp LEFT_GUI  &kp LEFT_ALT  &mo LAYER_T_EXTRA  &kp SPACE    &kp RET   &mo LAYER_T_NAV  &kp BACKSPACE  &mo LAYER_T_MAP
+                           &kp LEFT_GUI  &kp LEFT_ALT  &mo LAYER_T_EXTRA  &kp SPACE    &kp RSHIFT   &mo LAYER_T_NAV  &kp BACKSPACE  &mo 5
+            >;
+        };
+
+        LAYER_T_HRM {
+            bindings = <
+&trans  &trans               &trans           &trans           &trans             &trans                    &trans  &trans              &trans            &trans            &trans                        &trans
+&trans  &trans               &trans           &trans           &trans             &trans                    &trans  &trans              &trans            &trans            &trans                        &trans
+&trans  &hml LEFT_CONTROL A  &hml LEFT_GUI S  &hml LEFT_ALT D  &hml LEFT_SHIFT F  &trans                    &trans  &hmr RIGHT_SHIFT J  &hmr RIGHT_ALT K  &hmr RIGHT_GUI L  &hmr RIGHT_CONTROL SEMICOLON  &trans
+&trans  &trans               &trans           &trans           &trans             &trans  &trans    &trans  &trans  &trans              &trans            &trans            &trans                        &trans
+                                              &trans           &trans             &trans  &trans    &trans  &trans  &trans              &trans
             >;
         };
 
@@ -92,40 +95,23 @@
             >;
         };
 
-        LAYER_T_HRM {
-            bindings = <
-&trans  &trans               &trans           &trans           &trans             &trans                    &trans  &trans              &trans            &trans            &trans                        &trans
-&trans  &trans               &trans           &trans           &trans             &trans                    &trans  &trans              &trans            &trans            &trans                        &trans
-&trans  &hml LEFT_CONTROL A  &hml LEFT_GUI S  &hml LEFT_ALT D  &hml LEFT_SHIFT F  &trans                    &trans  &hmr RIGHT_SHIFT J  &hmr RIGHT_ALT K  &hmr RIGHT_GUI L  &hmr RIGHT_CONTROL SEMICOLON  &trans
-&trans  &trans               &trans           &trans           &trans             &trans  &trans    &trans  &trans  &trans              &trans            &trans            &trans                        &trans
-                                              &trans           &trans             &trans  &trans    &trans  &trans  &trans              &trans
-            >;
-        };
-
-        LAYER_T_MAP {
-            bindings = <
-&to LAYER_T_DEFAULT   &to LAYER_T_EXTRA  &to LAYER_T_NAV  &to LAYER_T_HMRM  &to LAYER_T_MAP  &to LAYER_T_BT                    &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans                    &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &kp P   &trans  &trans                    &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
-                        &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans
-            >;
-        };
-
         LAYER_T_BT {
-            // ------------------------------------------------------------------------------------------------------------
-            // | BTCLR | BT1 | BT2 |  BT3 |  BT4 |  BT5 |                   |      |       |       |      |       |       |
-            // |  F1   |  F2 |  F3 |  F4  |  F5  |  F6  |                   |  F7  |  F8   |  F9   |  F10 |  F11  |  F12  |
-            // |   `   |  !  |  @  |  #   |  $   |  %   |                   |  ^   |  &    |  *    |  (   |   )   |   ~   |
-            // |       |     |     |      |      |      |        |  |       |      |  _    |  +    |  {   |   }   |  "|"  |
-            //                     |      |      |      |        |  |       |      |       |       |
-
             bindings = <
 &bt BT_CLR  &bt BT_SEL 0      &bt BT_SEL 1       &bt BT_SEL 2       &bt BT_SEL 3  &bt BT_SEL 4                    &trans     &trans     &trans     &trans    &trans    &trans
 &kp F1      &kp F2            &kp F3             &kp F4             &kp F5        &kp F6                          &kp F7     &kp F8     &kp F9     &kp F10   &kp F11   &kp F12
 &kp GRAVE   &kp EXCL          &kp AT             &kp HASH           &kp DOLLAR    &kp PRCNT                       &kp CARET  &kp AMPS   &kp ASTRK  &kp LPAR  &kp RPAR  &kp TILDE
 &trans      &ext_power EP_ON  &ext_power EP_OFF  &ext_power EP_TOG  &trans        &trans        &trans    &trans  &trans     &kp MINUS  &kp PLUS   &kp LBRC  &kp RBRC  &kp PIPE
                                                  &trans             &trans        &trans        &trans    &trans  &trans     &trans     &trans
+            >;
+        };
+
+        LAYER_T_MAP {
+            bindings = <
+&to LAYER_T_DEFAULT   &to LAYER_T_HMRM  &to LAYER_T_EXTRA  &to LAYER_T_NAV  &to LAYER_T_BT  &to LAYER_T_MAP                    &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans                    &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &kp P   &trans  &trans                    &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
+                        &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans
             >;
         };
     };

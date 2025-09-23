@@ -17,9 +17,9 @@
 
 &msc {
     acceleration-exponent = <0>;      // 0
-    time-to-max-speed-ms = <0>;       // 300
+    time-to-max-speed-ms = <100>;       // 300
     delay-ms = <0>;                   // 0
-    trigger-period-ms = <2>;
+    trigger-period-ms = <16>;
 };
 
 &mmv {
@@ -71,7 +71,7 @@
     scroll_encoder_hzntl: scroll_encoder_hzntl {
         compatible = "zmk,behavior-sensor-rotate";
         #sensor-binding-cells = <0>;
-        bindings = <&msc SCRL_LEFT>, <&msc SCRL_RIGHT>;
+        bindings = <&msc MOVE_LEFT>, <&msc MOVE_RIGHT>;
         tap-ms = <100>;
     };
 
@@ -101,27 +101,27 @@
         gaymink_1 {
             bindings = <
 &kp ESC     &kp N1          &kp N2         &kp N3          &kp N4          &kp N5          &kp UP_ARROW     &kp N6          &kp N7          &kp N8         &kp N9         &kp N0          &kp BSPC
-&kp T       &kp TAB         &kp Q           &kp W          &kp E           &kp R           &kp DOWN_ARROW   &kp Y           &kp U           &kp UP         &kp O          &kp P           &kp BSPC
-&kp G       &kp LSHFT       &kp A           &kp S          &kp D           &kp F           &kp LEFT_ARROW   &kp H           &kp LEFT        &kp DOWN       &kp RIGHT      &kp SEMI        &kp ENTER
-&kp B       &kp LCTRL       &kp Z           &kp X          &kp C           &kp V           &kp RIGHT_ARROW  &kp N           &kp M           &kp COMMA      &kp DOT        &kp FSLH        &kp ENTER
-&kp C_MUTE  &kp LCTRL       &kp LGUI       &kp LALT        &kp SPACE       &kp SPACE       &kp ENTER        &mt RSHFT SPACE &mo 5           &kp BSPC       &kp RCTRL      &tog 3
+&kp TAB     &kp Q           &kp W          &kp E           &kp R           &kp T           &kp DOWN_ARROW   &kp Y           &kp U           &kp UP         &kp O          &kp P           &kp BSPC
+&kp LSHFT   &kp A           &kp S          &kp D           &kp F           &kp G           &kp LEFT_ARROW   &kp H           &kp LEFT        &kp DOWN       &kp RIGHT      &kp SEMI        &kp ENTER
+&kp LCTRL   &kp Z           &kp X          &kp C           &kp V           &kp B           &kp RIGHT_ARROW  &kp N           &kp M           &kp COMMA      &kp DOT        &kp FSLH        &kp ENTER
+&kp C_MUTE  &kp LCTRL       &kp LGUI       &kp LALT        &kp SPACE       &kp SPACE       &kp ENTER        &mt RSHFT SPACE &mo 5           &kp BSPC       &tog 2      &tog 3
             >;
 
             sensor-bindings = <&scroll_encoder_vtcl>;
-            display-name = "GAYMINK";
+            display-name = "G1";
         };
 
         gaymink_2 {
             bindings = <
 &kp ESC     &kp N1          &kp N2         &kp N3          &kp N4          &kp N5          &kp UP_ARROW     &kp N6          &kp N7          &kp N8         &kp N9         &kp N0          &kp BSPC
 &kp T       &kp TAB         &kp Q           &kp W          &kp E           &kp R           &kp DOWN_ARROW   &kp Y           &kp U           &kp UP         &kp O          &kp P           &kp BSPC
-&kp G       &kp LSHFT       &kp A           &kp S          &kp D           &kp F           &kp LEFT_ARROW   &kp H           &kp LEFT        &kp DOWN       &kp RIGHT      &kp SEMI        &kp ENTER
-&kp B       &kp LCTRL       &kp Z           &kp X          &kp C           &kp V           &kp RIGHT_ARROW  &kp N           &kp M           &kp COMMA      &kp DOT        &kp FSLH        &kp ENTER
-&kp C_MUTE  &kp LCTRL       &kp LGUI       &kp LALT        &kp SPACE       &kp SPACE       &kp ENTER        &mt RSHFT SPACE &mo 5           &kp BSPC       &kp RCTRL      &tog 3
+&kp LSHFT   &kp LSHFT       &kp A           &kp S          &kp D           &kp F           &kp LEFT_ARROW   &kp H           &kp LEFT        &kp DOWN       &kp RIGHT      &kp SEMI        &kp ENTER
+&kp LCTRL   &kp LCTRL       &kp Z           &kp X          &kp C           &kp V           &kp RIGHT_ARROW  &kp N           &kp M           &kp COMMA      &kp DOT        &kp FSLH        &kp ENTER
+&kp C_MUTE  &kp LCTRL       &kp B           &kp G          &kp SPACE       &kp SPACE       &kp ENTER        &mt RSHFT SPACE &mo 5           &kp BSPC       &tog 2         &tog 3
             >;
 
             sensor-bindings = <&scroll_encoder_vtcl>;
-            display-name = "GAYMINK";
+            display-name = "G2";
         };
 
 
@@ -179,7 +179,7 @@
 
         map_7 {
             bindings = <
-&to 0       &to 1           &trans         &trans          &to 5           &trans          &trans           &trans          &trans          &trans         &trans         &trans         &trans
+&to 0       &to 1           &trans         &trans          &trans          &trans          &to 6            &trans          &trans          &trans         &trans         &trans         &trans
 &trans      &trans          &trans         &trans          &trans          &trans          &trans           &trans          &trans          &trans         &trans         &trans         &trans
 &trans      &trans          &trans         &trans          &trans          &to 1           &trans           &trans          &trans          &trans         &trans         &trans         &trans
 &trans      &trans          &trans         &trans          &trans          &trans          &trans           &trans          &trans          &trans         &trans         &trans         &trans

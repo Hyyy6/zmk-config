@@ -1,5 +1,5 @@
 #define ZMK_POINTING_DEFAULT_MOVE_VAL 1200  // 600
-#define ZMK_POINTING_DEFAULT_SCRL_VAL 25   // 10
+#define ZMK_POINTING_DEFAULT_SCRL_VAL 1   // 10
 
 #include <input/processors.dtsi>
 #include <zephyr/dt-bindings/input/input-event-codes.h>
@@ -13,13 +13,13 @@
 
 &mmv_input_listener { input-processors = <&zip_xy_scaler 2 1>; };
 
-&msc_input_listener { input-processors = <&zip_scroll_scaler 2 1>; };
+// &msc_input_listener { input-processors = <&zip_scroll_scaler 2 1>; };
 
 &msc {
     acceleration-exponent = <0>;      // 0
-    time-to-max-speed-ms = <100>;       // 300
+    time-to-max-speed-ms = <300>;       // 300
     delay-ms = <0>;                   // 0
-    trigger-period-ms = <16>;
+    trigger-period-ms = <2>;
 };
 
 &mmv {
@@ -129,7 +129,7 @@
             bindings = <
 &kp ESC     &kp N1          &kp N2         &kp N3          &kp N4          &kp N5          &kp UP_ARROW     &kp N6          &kp N7          &kp N8         &kp N9         &kp N0          &kp MINUS
 &kp TAB     &kp Q           &kp W          &kp E           &kp R           &kp T           &kp DOWN_ARROW   &kp Y           &kp U           &kp I          &kp O          &kp P           &kp BSLH
-&kp LCTRL   &hml LCTRL A    &hml LGUI S    &hml LALT D     &hml LSHIFT F   &kp G           &kp LEFT_ARROW   &kp H           &hmr RSHIFT J   &hmr RALT K    &hmr RGUI L    &hmr RCTRL SEMI &kp SQT
+&kp LCTRL   &kp A           &kp S          &kp D           &kp F           &kp G           &kp LEFT_ARROW   &kp H           &kp J           &kp K          &kp L          &kp SEMI        &kp SQT
 &kp LSHFT   &kp Z           &kp X          &kp C           &kp V           &kp B           &kp RIGHT_ARROW  &kp N           &kp M           &kp COMMA      &kp DOT        &kp FSLH        &kp ENTER
 &kp C_MUTE  &kp LCTRL       &kp LGUI       &kp LALT        &mo 3           &kp SPACE       &kp ENTER        &mt RSHFT SPACE &mo 4           &kp BSPC       &kp RCTRL      &tog 3
             >;
@@ -179,8 +179,8 @@
 
         map_7 {
             bindings = <
-&to 0       &to 1           &trans         &trans          &trans          &trans          &to 6            &trans          &trans          &trans         &trans         &trans         &trans
-&trans      &trans          &trans         &trans          &trans          &trans          &trans           &trans          &trans          &trans         &trans         &trans         &trans
+&to 0       &to 1           &trans         &trans          &trans          &to 6          &to 6            &trans          &trans          &trans         &trans         &trans         &trans
+&trans      &trans          &trans         &trans          &trans          &to 6          &to 6           &trans          &trans          &trans         &trans         &trans         &trans
 &trans      &trans          &trans         &trans          &trans          &to 1           &trans           &trans          &trans          &trans         &trans         &trans         &trans
 &trans      &trans          &trans         &trans          &trans          &trans          &trans           &trans          &trans          &trans         &trans         &trans         &trans
 &trans      &trans          &trans         &trans          &trans          &trans          &trans           &trans          &trans          &trans         &trans         &trans
